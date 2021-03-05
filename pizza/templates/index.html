@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>registration for the people</title>
+     {% load static %}
+     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+     <div class="w3-container" id=wrapper>
+          <div id="header" class="w3-container">
+               <p id="headerParagraph" class="w3-cursive" style="text-shadow:5px 5px 0 black">Pizza for the People</p>
+          </div>
+
+          <div id="body" class="w3-container">
+
+               <div id="registration" class="w3-container">
+                    <div id="regcard" class="w3-card-4">
+                         <div class="w3-container w3-red">
+                              <h2>Register</h2>
+                         </div>
+
+                         <form id="registrationform" class="w3-container" action="/register" method="POST">
+                              {% csrf_token %}
+                              <div class="container">
+                                   <hr>
+                                   <label for="first_name"><b>First Name</b></label>
+                                   <input class="w3-input" type="text" placeholder="First Name" name="first_name"
+                                        required>
+                                   <label for="last_name"><b>Last Name</b></label>
+                                   <input class="w3-input" type="text" placeholder="Last Name" name="last_name"
+                                        required>
+                                   <label for="address"><b>Address</b></label>
+                                   <input class="w3-input" type="text" placeholder="where you live" name="address"
+                                        required>
+                                   <label for="email"><b>Email</b></label>
+                                   <input type="text" placeholder="Enter Email" name="email" required>
+
+                                   <label for="psw"><b>Password</b></label>
+                                   <input type="password" placeholder="Enter Password" name="password" required>
+
+                                   <label for=""><b>Password Confirmation</b></label>
+                                   <input type="password" placeholder="Confirm Password" name="password_confirmation"
+                                        required>
+
+                                   <div class="clearfix">
+                                        <button type="button" class="cancelbtn">Cancel</button>
+                                        <button type="submit" value="register" class="signupbtn">Enter</button>
+                                   </div>
+                              </div>
+                              <!-- First Name: <input class="w3-input" type="text" name="first_name">
+                         Last Name: <input class="w3-input" type="text" name="last_name">
+                         Address: <input class="w3-input" type="text" name="address">
+                         Email: <input class="w3-input" type="email" name="email">
+                         Password: <input class="w3-input" type="password" name="password">
+                         Password Confirmation: <input class="w3-input" type="password"
+                              name="password_confirmation"> -->
+
+                              <!-- <button class="w3-btn w3-red type=" submit" value="Register">Register</button> -->
+                              <!-- <input class="logreg" type="submit" value="Register"> -->
+                         </form>
+                    </div>
+
+               </div>
+
+               <div class="w3-container w3-center w3-opacity" id="aboutIngredients">
+                    <div class="w3-panel w3-border w3-light-grey w3-round-large">
+                         <p class="w3-cursive">We use only the freshest Organic ingredients, locally sourced when possible</p>
+                    </div>
+               </div>
+
+          </div>
+     </div>
+
+     <button class="open-button" onclick="openForm()">Already Registered? Login</button>
+
+     <div class="form-popup" id="myForm">
+          <form action="/login" class="form-container" method="POST">
+               {% csrf_token %}
+               <h1>Login</h1>
+               <label for="email"><b>Email</b></label>
+               <input type="text" placeholder="Enter Email" name="email" required>
+
+               <label for="password"><b>Password</b></label>
+               <input type="password" placeholder="Enter Password" name="password" required>
+
+               <button type="submit" class="btn">Login</button>
+               <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+          </form>
+     </div>
+
+     <script>
+          function openForm() {
+               document.getElementById("myForm").style.display = "block";
+          }
+
+          function closeForm() {
+               document.getElementById("myForm").style.display = "none";
+          }
+     </script>
+
+     <!-- <div id="login" class="w3-panel w3-red w3-round-xlarge">
+          <div class="w3-container"></div>
+               <form id="loginform" class="w3-container" action="/login" method="POST" >
+                    {% csrf_token %}
+                    <h3 id="already">Already registered?<br> Log In</h3>
+                    Email: <input class="w3-input" type="email" name="email">
+                    Password: <input class="w3-input" type="password" name="password">
+                    <input class="logreg" type="submit" value="Login">
+               </form>
+          </div>
+     </div> -->
+     </div>
+</body>
+
+</html>

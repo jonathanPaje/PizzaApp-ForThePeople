@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Success</title>
+     {% load static %}
+     <link rel="stylesheet" href="{% static 'css/success.css' %}">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+     <header>
+          <h1>Success! Welcome {{user.first_name}}!</h1>
+          <a href="/logout">Logout</a>
+     </header>
+     <main>
+          <!------------------ MENU SECTION -------------------->
+          <div class="section">
+               <h2>Menu</h2>
+               <div class="sub-section">
+                    <table>
+                         <tr>
+                              <td><b>Size</b></td>
+                              <td><b>Price</b></td>
+                         </tr>
+                         {% for size in size %}
+                         <tr>
+                              <td>{{size.name}}</td>
+                              <td>{{size.price}}</td>
+                         </tr>
+                         {% endfor %}
+                    </table>
+                    <table>
+                         <tr>
+                              <td><b>Available Toppings</b></td>
+                         </tr>
+                         {% for topping in toppings %}
+                         <tr><td>{{topping.name}}</td></tr>
+                         {% endfor %}
+                    </table>
+               </div>
+          </div>
+          <!----------------------- ORDER SECTION ----------------------->
+          <div class="section">
+               <h2>Quick Option</h2>
+               <div class="sub-section">
+               
+                    <div>
+                         <h3>New Order</h3>
+                    </div>
+                    <div>
+                         <h3>Reorder My Favorites</h3>
+                    </div>
+                    <div>
+                         <h3>Select Signature Pizza</h3>
+                    </div>
+               </div>
+          </div>
+          
+          
+     </main>
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Create a Pizza</title>
+</head>
+<body>
+    <header>
+        <!-- nav bar here -->
+    </header>
+    <main>
+        <div>
+            <form action="/makepizza" method="post">
+                {% csrf_token %}
+                <h2>Craft Your Pizza</h2>
+                <label for="size">Name Your Custom Pizza:</label>
+                <input type="text" name="name" id="name" >
+                <label for="size">Size:</label>
+                <select id="size" name="size">
+                    {% for i in size %}
+                    <option value="{{i.id}}">{{i.name}} = {{i.price}}</option>
+                    {% endfor %}
+                </select>
+                <div>
+                    <label for="">Toppings:</label>
+                    {% for i in toppings %}
+                    <input type="checkbox" id="{{i.id}}" name="toppings" value="{{i.id}}">
+                    <label for="{{i.name}}">{{i.name}}</label>
+                    {% endfor %}
+                </div>
+                <!-- <label for="">Method:</label>  for cart -->
+                <!-- <label for="">Qty:</label>  for cart -->
+                <button type="submit">Add</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

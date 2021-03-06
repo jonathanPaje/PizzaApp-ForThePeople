@@ -3,6 +3,43 @@ from .models import User, Size, Topping, Pizza
 from django.contrib import messages
 import bcrypt
 # Create your views here.
+
+def addcart(request, pizzaId):
+    return redirect ('/createPizza')
+
+
+def makepizza(request):
+    if 'user_id' not in request.session:
+        messages.error(request, "You need to register or log in!")
+        return redirect('/')
+    if request.method == "GET":
+        return redirect('/home')
+    user = User.objects.get(id = request.session['user_id'])
+
+    pizza = Pizza.objects.create(
+        created_by = user,
+        size = Size.objects.get(id= request.POST['size']),
+        name = request.POST['name']
+    )
+    # Pizza object needs to be created first with id to set toppings
+    toppings = request.POST.getlist('toppings')
+    print(toppings)
+    pizza.toppings.set(toppings)
+    # once order model is set and addcart view is established, return redirect to "/addcart"
+
+    return redirect('/createPizza')
+
+def createPizzaPage(request):
+    if 'user_id' not in request.session:
+        messages.error(request, "You need to register or log in!")
+        return redirect('/')
+    context = {
+        'user': User.objects.get(id=request.session['user_id']),
+        'size': Size.objects.all(),
+        'toppings':Topping.objects.all()
+    }
+    return render(request, "createPizzaPage.html", context)
+
 def index(request):
     return render(request, "index.html")
 

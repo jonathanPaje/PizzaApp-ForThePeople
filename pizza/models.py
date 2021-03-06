@@ -32,24 +32,33 @@ class User(models.Model):
      def __str__(self):
           return f"{self.last_name}, {self.first_name}"
 
-class Topping(models.Model):
-     name = models.CharField(max_length=60, unique=True)
-     def __str__(self):
-          return self.name
-
 class Size(models.Model):
      name = models.CharField(max_length=60)
      price = models.DecimalField(max_digits=4, decimal_places=2)
      def __str__(self):
           return f"{self.name} for ${self.price}"
 
-class Pizza(models.Model):
-     name = models.CharField(max_length = 60)
-     size = models.ForeignKey(Size, on_delete=models.CASCADE, blank=True)
-     topping = models.ManyToManyField(Topping, blank=True)
-     
+class Topping(models.Model):
+     name = models.CharField(max_length=60, unique=True)
      def __str__(self):
-          return f'{self.size.name} with {self.topping.all().count()} topping for {self.size.price}'
+          return self.name
+
+class Pizza(models.Model):
+     name = models.CharField(max_length=100, null=True, blank=True)
+     created_by = models.ForeignKey(User, related_name='pizzas', on_delete=models.CASCADE, null=True)
+     size = models.ForeignKey(Size, related_name='size_pizzas', on_delete=models.CASCADE, blank=True)
+     toppings = models.ManyToManyField(Topping, related_name='toppings')
+     def __str__(self):
+          return f'{self.name}-{self.size.name} with {self.toppings.count()} toppings for {self.size.price} by {self.created_by}'
+
+
+class Order(models.Model):
+     order_user = models.ForeignKey(User, related_name='orders', on_delete=models.CASCADE, null=True)
+     order_timestamp = models.DateTimeField(auto_now_add=True)
+     order_item = models.ManyToManyField(Pizza, related_name='ordered')
+     order_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00, editable=False)
+
+
 
 # class Order(models.Model):
 #      order_client = models.ForeignKey(User, on_delete=models.CASCADE)-----

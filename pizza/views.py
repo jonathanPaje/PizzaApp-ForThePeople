@@ -82,3 +82,11 @@ def success(request):
 def logout(request):
     request.session.clear()
     return redirect('/')
+def account(request):
+    if 'user_id' not in request.session:
+        messages.error(request, "You need to register or log in!")
+        return redirect('/')
+    context = {
+        'user': User.objects.get(id=request.session['user_id']),
+    }
+    return render(request, "account.html", context)

@@ -45,8 +45,8 @@
 
 /* login */
 .open-button {
-    background-color: white;
-    color: red;
+    background-color: red;
+    color: white;
     padding: 16px 20px;
     border: none;
     cursor: pointer;
@@ -107,7 +107,7 @@
     opacity: 1;
 }
 
-/* test for registration */
+/*  registration */
 input[type=text], input[type=password] {
     width: 100%;
     padding: 15px;
@@ -162,6 +162,24 @@ button:hover {
   /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
     .cancelbtn, .signupbtn {
-         width: 100%;
+        width: 100%;
     }
+}
+
+/* *************Success Page****************** */
+#reorderFav {
+    font-size: x-large;
+}
+
+#suprisePizza {
+    font-size: large;
+}
+/* h2 quick options */
+#quickOptions{
+    font-size: 2vw;
+    color: lightgrey
+}
+/* success page h1 pizza to the people  */
+#successpizza {
+    font-size: 3vw;
 }

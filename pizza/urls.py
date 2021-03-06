@@ -9,5 +9,7 @@ urlpatterns = [
     path('createPizza', views.createPizzaPage),
     path('makepizza', views.makepizza),
     path('addcart', views.addcart),
+    path('account', views.account),
+    
     
 ]

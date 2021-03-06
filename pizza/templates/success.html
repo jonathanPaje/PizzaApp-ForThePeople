@@ -6,56 +6,55 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Success</title>
      {% load static %}
-     <link rel="stylesheet" href="{% static 'css/success.css' %}">
+     <!-- <link rel="stylesheet" href="{% static 'css/success.css' %}"> -->
+     <link rel="stylesheet" href="{% static 'css/style.css' %}">
      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2021.css">
 </head>
 <body>
      <header>
-          <h1>Success! Welcome {{user.first_name}}!</h1>
-          <a href="/logout">Logout</a>
+          <div class="w3-bar w3-2021-inkwell">
+               <a href="/logout" class="w3-bar-item  w3-right w3-button">Logout</a>
+               <a href="#" class="w3-bar-item w3-button w3-right">Order</a>
+               <a href="/account" class="w3-bar-item w3-button w3-right">Account</a>
+          </div>
      </header>
      <main>
-          <!------------------ MENU SECTION -------------------->
-          <div class="section">
-               <h2>Menu</h2>
-               <div class="sub-section">
-                    <table>
-                         <tr>
-                              <td><b>Size</b></td>
-                              <td><b>Price</b></td>
-                         </tr>
-                         {% for size in size %}
-                         <tr>
-                              <td>{{size.name}}</td>
-                              <td>{{size.price}}</td>
-                         </tr>
-                         {% endfor %}
-                    </table>
-                    <table>
-                         <tr>
-                              <td><b>Available Toppings</b></td>
-                         </tr>
-                         {% for topping in toppings %}
-                         <tr><td>{{topping.name}}</td></tr>
-                         {% endfor %}
-                    </table>
-               </div>
+          <div class="w3-container  w3-2021-buttercream w3-cursive w3-center">
+               <h1 id="successpizza" class="w3-cursive">Pizza for the People</h1>
+               <img src="/static/img/ingredients.jpg" class="w3-circle w3-image" alt="pizza ingredients">
+               <h4 class="w3-cursive w3-margin">Whether you are choosing each topping, reording an old favorite or rolling the dice and getting a suprise, rest assured that you will be getting quality ingredients.  At Pizza for the People we always use fresh, organic ingredients.</h4>
           </div>
+          <!------------------ MENU SECTION -------------------->
+
           <!----------------------- ORDER SECTION ----------------------->
-          <div class="section">
-               <h2>Quick Option</h2>
-               <div class="sub-section">
-               
-                    <div>
-                         <h3>New Order</h3>
+          <div id="success" class="w3-container w3-center w3-2021-inkwell">
+               <h2 id="quickOptions" class="w3-cursive">Quick Options</h2>
+               <div class="w3-cell-row w3-center">
+
+                    <div id="newOrder" class="w3-container  w3-cursive w3-2021-buttercream w3-cell">
+                         <a href="#"><h3 class="w3-button w3-2021-inkwell">New Order</h3></a>
+                         <h4 class="w3-cursive">Small cheese $5.00 Medium cheese $7.00 Large cheese $10.00</h4>
+                         <h6 class="w3-cursive">$1.oo per additional topping</h6>
+                         <p>Anchovies, Bacon, Basil, Bell Pepper, Canadian Style Bacon, Chicken, Garlic, Ham, Italian Sausage, Jalapeño, Meatball, Mushroom, Olive, Onion, Pepperoncini, Pepperoni, Pineapple, Tomato</p>
                     </div>
-                    <div>
-                         <h3>Reorder My Favorites</h3>
+
+                    <div id="reorderFav" class="w3-container w3-cursive w3-2021-ultimate-gray w3-cell w3-center">
+                         <a href="#"><h3 class=" w3-button w3-cursive w3-2021-inkwell ">Reorder My Favorite</h3></a>
+                         <p class="w3-cursive">
+                              Creature of Habit?  We got you! Save and reorder all of your favorites here.
+                         </p>
                     </div>
-                    <div>
-                         <h3>Select Signature Pizza</h3>
+
+                    <div id="suprisePizza" class="w3-container w3-cursive w3-2021-desert-mist w3-cell w3-center">
+                         <a href="#"><h3 class="w3-cursive w3-button w3-cursive w3-2021-inkwell">Suprise Me</h3></a>
+                         <p>
+                              Feeling adventurous?  Let our Signature Topping selector do everything for you.  Not recommended for our customers with food allergies. 
+                         </p>
                     </div>
+
                </div>
+
           </div>
           
           

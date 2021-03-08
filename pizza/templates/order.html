@@ -30,7 +30,7 @@
                 <p>For:{{cart.order_user}}</p>
                 <p>{{cart.order_item.count}} Items:</p>
                 {% for p in cart.order_item.all %}
-                <p>{{p}}</p>
+                <p>{{p}}</p> <!--add remove button-->
                 {% endfor %}
                 <p>Amount: ${{cart.order_price}}</p>
             </div>

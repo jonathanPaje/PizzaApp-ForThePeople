@@ -48,6 +48,7 @@ class Pizza(models.Model):
      created_by = models.ForeignKey(User, related_name='pizzas', on_delete=models.CASCADE, null=True)
      size = models.ForeignKey(Size, related_name='size_pizzas', on_delete=models.CASCADE, blank=True)
      toppings = models.ManyToManyField(Topping, related_name='toppings')
+     favorite = models.ManyToManyField(User, related_name="favorites")
      def __str__(self):
           return f'{self.name}-{self.size.name} with {self.toppings.count()} toppings for {self.size.price} '
 

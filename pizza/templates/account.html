@@ -15,7 +15,7 @@
           <header class="w3-2021-desert-mist">
                <div class="w3-bar w3-2021-inkwell">
                     <a href="/logout" class="w3-bar-item w3-right w3-button">Logout</a>
-                    <a href="#" class="w3-bar-item w3-button w3-right">Order</a>
+                    <a href="/order" class="w3-bar-item w3-button w3-right">Order({{cart.order_item.count}})</a>
                     <a href="/success" class="w3-bar-item w3-button w3-right">Home</a>
                </div>
                <h1 id="successpizza" class="w3-cursive w3-center">Pizza for the People</h1>
@@ -44,6 +44,9 @@
                     <h3>{{order}}</h3>
                          {% for pizza in order.order_item.all%}
                          <!-- add favorite button to all pizzas -->
+                         <form action="" method="post">
+                              <p>{{pizza}}</p>
+                         </form>
                          <p>{{pizza}}</p>
                          {% endfor %}
                     {% endfor %}

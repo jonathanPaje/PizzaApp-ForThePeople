@@ -1,11 +1,43 @@
 from django.shortcuts import render, redirect
-from .models import User, Size, Topping, Pizza
+from .models import User, Size, Topping, Pizza, Order
 from django.contrib import messages
+from decimal import *
 import bcrypt
 # Create your views here.
 
-def addcart(request, pizzaId):
-    return redirect ('/createPizza')
+
+# def surpriseMe(request):
+#     pizzas = Pizza.objects.filter(name="For The People")
+#     for pizza in pizzas.all():
+#         print(pizza)
+#     return redirect('/success')
+
+def order(request):
+    user = User.objects.get(id=request.session['user_id'])
+    cart = Order.objects.get(id = request.session['cart_id'])
+    context = {
+        'user': user,
+        'cart':cart
+    }
+    return render (request, "order.html",context)
+
+def addcart(request, pizza_id):
+    if 'user_id' not in request.session:
+        messages.error(request, "You need to register or log in!")
+        return redirect('/')
+    if 'cart_id' not in request.session:        
+        user = User.objects.get(id=request.session['user_id'])
+        cart = Order.objects.create(
+            order_user = user
+        )
+        request.session['cart_id'] = cart.id
+    cart=Order.objects.get(id=request.session['cart_id'])
+    pizza = Pizza.objects.get(id = pizza_id)
+    cart.order_item.add(pizza)
+    total = Decimal(cart.order_price) + pizza.size.price
+    cart.order_price = total
+    cart.save()
+    return redirect ('/order')
 
 
 def makepizza(request):
@@ -21,13 +53,12 @@ def makepizza(request):
         size = Size.objects.get(id= request.POST['size']),
         name = request.POST['name']
     )
-    # Pizza object needs to be created first with id to set toppings
+
     toppings = request.POST.getlist('toppings')
     print(toppings)
     pizza.toppings.set(toppings)
-    # once order model is set and addcart view is established, return redirect to "/addcart"
 
-    return redirect('/createPizza')
+    return redirect(f'/addcart/{pizza.id}')
 
 def createPizzaPage(request):
     if 'user_id' not in request.session:

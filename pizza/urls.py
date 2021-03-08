@@ -8,8 +8,9 @@ urlpatterns = [
     path('logout', views.logout),
     path('createPizza', views.createPizzaPage),
     path('makepizza', views.makepizza),
-    path('addcart', views.addcart),
+    path('addcart/<int:pizza_id>', views.addcart),
     path('account', views.account),
-    
+    path('order', views.order),
+    # path('surpriseMe', views.surpriseMe),
     
 ]

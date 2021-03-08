@@ -34,7 +34,7 @@ class User(models.Model):
 
 class Size(models.Model):
      name = models.CharField(max_length=60)
-     price = models.DecimalField(max_digits=4, decimal_places=2)
+     price = models.DecimalField(max_digits=5, decimal_places=2)
      def __str__(self):
           return f"{self.name} for ${self.price}"
 
@@ -49,22 +49,17 @@ class Pizza(models.Model):
      size = models.ForeignKey(Size, related_name='size_pizzas', on_delete=models.CASCADE, blank=True)
      toppings = models.ManyToManyField(Topping, related_name='toppings')
      def __str__(self):
-          return f'{self.name}-{self.size.name} with {self.toppings.count()} toppings for {self.size.price} by {self.created_by}'
+          return f'{self.name}-{self.size.name} with {self.toppings.count()} toppings for {self.size.price} '
 
 
 class Order(models.Model):
      order_user = models.ForeignKey(User, related_name='orders', on_delete=models.CASCADE, null=True)
      order_timestamp = models.DateTimeField(auto_now_add=True)
      order_item = models.ManyToManyField(Pizza, related_name='ordered')
-     order_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00, editable=False)
+     order_price = models.DecimalField(max_digits=5, decimal_places=2, default=0.00, blank=True)
+     def __str__(self):
+          return f'Order# {self.id} -- {self.order_item.count()} Items: '
 
 
-
-# class Order(models.Model):
-#      order_client = models.ForeignKey(User, on_delete=models.CASCADE)-----
-#      order_timestamp = models.DateTimeField(auto_now_add=True)
-#      order_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00, editable=False)
-
-#      def __str__(self):
-#           return f"Order number {self.id}"
+# add favorite model
 

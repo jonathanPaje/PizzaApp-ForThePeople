@@ -40,7 +40,13 @@
                </form>
                <div id="accountform" class="w3-container w3-cell w3-2021-inkwell">
                     <h1>Past Orders</h1>
-
+                    {% for order in user.orders.all %}
+                    <h3>{{order}}</h3>
+                         {% for pizza in order.order_item.all%}
+                         <!-- add favorite button to all pizzas -->
+                         <p>{{pizza}}</p>
+                         {% endfor %}
+                    {% endfor %}
                </div>
 
           </div>

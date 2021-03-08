@@ -2,15 +2,15 @@ from django.shortcuts import render, redirect
 from .models import User, Size, Topping, Pizza, Order
 from django.contrib import messages
 from decimal import *
+from random import randint
 import bcrypt
 # Create your views here.
 
 
-# def surpriseMe(request):
-#     pizzas = Pizza.objects.filter(name="For The People")
-#     for pizza in pizzas.all():
-#         print(pizza)
-#     return redirect('/success')
+def surpriseMe(request):
+    value = randint(1, 5)
+    pizza = Pizza.objects.get(id=value)
+    return redirect(f'/addcart/{pizza.id}')
 
 def order(request):
     user = User.objects.get(id=request.session['user_id'])

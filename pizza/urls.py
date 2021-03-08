@@ -11,6 +11,6 @@ urlpatterns = [
     path('addcart/<int:pizza_id>', views.addcart),
     path('account', views.account),
     path('order', views.order),
-    # path('surpriseMe', views.surpriseMe),
+    path('surpriseMe', views.surpriseMe),
     
 ]

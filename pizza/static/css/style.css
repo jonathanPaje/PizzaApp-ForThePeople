@@ -183,3 +183,38 @@ button:hover {
 #successpizza {
     font-size: 3vw;
 }
+/* Account page ************************************************************************************** */
+
+#accountform {
+    display: inline-block;
+    margin-right: 5%;
+    margin-bottom: 10%;
+}
+#orderhistory {
+    display: inline-block;
+    
+}
+
+/* create pizza *****************************************************************************************  */
+#createWrapper{
+    background-image: linear-gradient(grey, beige);
+}
+
+#createHeader {
+    background: no-repeat url("/static/img/download.jpg");
+    height: 200px;
+    
+    
+}
+
+#createh1 {
+    font-size: 5vw;
+    
+    
+
+}
+#createform {
+    font-size: xx-large;
+    margin-bottom: 18%;
+    margin-top: 1%;
+}

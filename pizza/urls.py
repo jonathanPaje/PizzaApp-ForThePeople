@@ -12,6 +12,7 @@ urlpatterns = [
     path('account', views.account),
     path('order', views.order),
     path('surpriseMe', views.surpriseMe),
-    path('complete', views.paymentComplete, name='complete')
+    path('complete', views.paymentComplete, name='complete'),
+    path('update', views.update),
     
 ]

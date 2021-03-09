@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account</title>
+    <title>Order</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -17,6 +17,7 @@
                 <a href="/logout" class="w3-bar-item w3-right w3-button">Logout</a>
                 <a href="#" class="w3-bar-item w3-button w3-right">Order({{cart.order_item.count}})</a>
                 <a href="/success" class="w3-bar-item w3-button w3-right">Home</a>
+                <a href="/account" class="w3-bar-item w3-button w3-right">Account</a>
             </div>
             <h1 id="successpizza" class="w3-cursive w3-center">Pizza for the People</h1>
 

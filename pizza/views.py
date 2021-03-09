@@ -141,3 +141,16 @@ def account(request):
         'cart': Order.objects.get(id=request.session['cart_id']),
     }
     return render(request, "account.html", context)
+
+def update(request):
+    if 'user_id' not in request.session:
+        messages.error(request, "You need to register or log in!")
+        return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    user.first_name = request.POST['first_name']
+    user.last_name = request.POST['last_name']
+    user.email = request.POST['email']
+    user.address = request.POST['address']
+    user.save()
+    return redirect("/account")
+

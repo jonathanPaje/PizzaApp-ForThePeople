@@ -12,5 +12,6 @@ urlpatterns = [
     path('account', views.account),
     path('order', views.order),
     path('surpriseMe', views.surpriseMe),
+    path('update', views.update),
     
 ]

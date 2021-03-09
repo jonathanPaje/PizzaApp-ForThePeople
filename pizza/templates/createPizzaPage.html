@@ -5,36 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Create a Pizza</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2021.css">
 </head>
 <body>
-    <header>
-        <!-- nav bar here -->
-    </header>
-    <main>
-        <div>
-            <form action="/makepizza" method="post">
-                {% csrf_token %}
-                <h2>Craft Your Pizza</h2>
-                <label for="size">Name Your Custom Pizza:</label>
-                <input type="text" name="name" id="name" >
-                <label for="size">Size:</label>
-                <select id="size" name="size">
-                    {% for i in size %}
-                    <option value="{{i.id}}">{{i.name}} = {{i.price}}</option>
-                    {% endfor %}
-                </select>
-                <div>
-                    <label for="">Toppings:</label>
-                    {% for i in toppings %}
-                    <input type="checkbox" id="{{i.id}}" name="toppings" value="{{i.id}}">
-                    <label for="{{i.name}}">{{i.name}}</label>
-                    {% endfor %}
-                </div>
-                <!-- <label for="">Method:</label>  for cart -->
-                <!-- <label for="">Qty:</label>  for cart -->
-                <button type="submit">Add</button>
-            </form>
-        </div>
-    </main>
+    <div id="createWrapper" class="w3-container">
+        <header id="createHeader" class="w3-container">
+            <div class="w3-bar w3-2021-inkwell">
+                <a href="/logout" class="w3-bar-item w3-right w3-button">Logout</a>
+                <a href="/order" class="w3-bar-item w3-button w3-right">Order({{cart.order_item.count}})</a>
+                <a href="/success" class="w3-bar-item w3-button w3-right">Home</a>
+                <a href="/account" class="w3-bar-item w3-button w3-right">Account</a>
+            </div>
+            
+        </header>
+        <main>
+            <div class="w3-container w3-cursive">
+                <h1 id="createh1" class="w3-center w3-cursive"><b>Create Your Pizza</b></h1>
+                <form id="createform" class="w3-container w3 w3-center w3-padding" action="/makepizza" method="post">
+                    {% csrf_token %}
+                    
+                    <label for="size">Name Your Custom Pizza:</label>
+                    <input type="text" name="name" id="name" style="width: 20%;">
+                    <label for="size">Size:</label>
+                    <select id="size" name="size">
+                        {% for i in size %}
+                        <option value="{{i.id}}">{{i.name}} = {{i.price}}</option>
+                        {% endfor %}
+                    </select>
+                    <div>
+                        <label for="">Toppings:</label>
+                        {% for i in toppings %}
+                        <input type="checkbox" id="{{i.id}}" name="toppings" value="{{i.id}}">
+                        <label for="{{i.name}}">{{i.name}}</label>
+                        {% endfor %}
+                    </div>
+                    <!-- <label for="">Method:</label>  for cart -->
+                    <!-- <label for="">Qty:</label>  for cart -->
+                    <button class="w3-button w3-black" style="width: 20%;" type="submit">Add</button>
+                </form>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

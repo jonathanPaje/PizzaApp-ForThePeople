@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import User, Size, Topping, Pizza, Order
+from django.http import JsonResponse
 from django.contrib import messages
 from decimal import *
 from random import randint
 import bcrypt
+import json
 # Create your views here.
 
 # TODO LIST
@@ -12,10 +14,14 @@ import bcrypt
 #create remove button in order page
 # render a list of favorites page
 
-
+def paymentComplete(request):
+    body = json.loads(request.body)
+    print ('BODY:', body)
+    del request.session['cart_id']
+    return JsonResponse('Payment completed!', safe=False)
 
 def surpriseMe(request):
-    value = randint(1, 5)
+    value = randint(1, 4)
     pizza = Pizza.objects.get(id=value)
     return redirect(f'/addcart/{pizza.id}')
 

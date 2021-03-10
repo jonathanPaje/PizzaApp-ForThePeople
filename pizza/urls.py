@@ -14,5 +14,6 @@ urlpatterns = [
     path('surpriseMe', views.surpriseMe),
     path('complete', views.paymentComplete, name='complete'),
     path('update', views.update),
-    
+    path('favorite/<int:pizza_id>',views.favorite),
+    path('favoritePage', views.favoritepage),
 ]

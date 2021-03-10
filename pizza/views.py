@@ -14,6 +14,27 @@ import json
 #create remove button in order page
 # render a list of favorites page
 
+def favoritepage(request):
+    if 'user_id' not in request.session:
+        messages.error(request, "You need to register or log in!")
+        return redirect('/')
+    user = User.objects.get(id = request.session['user_id'])
+    context={
+        'user':user
+    }
+    return render (request, "favoritespage.html", context)
+
+def favorite(request,pizza_id):
+    user = User.objects.get(id=request.session['user_id'])
+    pizza = Pizza.objects.get(id=pizza_id)
+    
+    if user in pizza.favorite.all():
+        pizza.favorite.remove(user)
+    else:
+        pizza.favorite.add(user)
+        
+    return redirect(f'/favoritePage')
+
 def paymentComplete(request):
     body = json.loads(request.body)
     print ('BODY:', body)

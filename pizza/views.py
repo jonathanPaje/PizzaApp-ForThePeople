@@ -157,6 +157,12 @@ def account(request):
     if 'user_id' not in request.session:
         messages.error(request, "You need to register or log in!")
         return redirect('/')
+    if 'cart_id' not in request.session:        
+        user = User.objects.get(id=request.session['user_id'])
+        cart = Order.objects.create(
+            order_user = user
+        )
+        request.session['cart_id'] = cart.id
     context = {
         'user': User.objects.get(id=request.session['user_id']),
         'cart': Order.objects.get(id=request.session['cart_id']),

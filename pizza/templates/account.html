@@ -11,7 +11,7 @@
      <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2021.css">
 </head>
 <body>
-     <div id="accountWrapper" class="w3-container w3-2021-buttercream">
+     <div id="accountWrapper" class=" w3-2021-buttercream">
           <header class="w3-2021-desert-mist">
                <div class="w3-bar w3-2021-inkwell">
                     <a href="/logout" class="w3-bar-item w3-right w3-button">Logout</a>
@@ -22,11 +22,11 @@
                <h1 class="w3-cursive w3-margin-bottom w3-center">Account Info</h1>
           </header>
 
-          <div id="accountbody" class="w3-container w3-cell">
+          <div id="accountbody" class="w3-container w3-center">
                <!-- <div id="accountform" class="w3-container  w3-margin-right w3-2021-inkwell" style="width: 50%"> -->
                     
                <!-- </div> -->
-               <form action="/update" method="POST" id="accountform" class="w3-container w3-cell-row w3-margin-top w3-cursive3" style="width: 40%;">
+               <form action="/update" method="POST" id="accountform" class="w3-container w3-cell-row  w3-cursive3" style="width: 40%;">
                     {% csrf_token %}
                     <h3 class="w3-cursive">Update account info</h3>
                     <label class="w3-text-2021-inkwell"><b>First Name</b></label>

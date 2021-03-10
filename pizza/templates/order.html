@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2021.css">
 </head>
 <body>
-    <div id="accountWrapper" class="w3-container w3-2021-buttercream">
+    <div id="orderWrapper" class="w3-container w3-2021-buttercream">
         <header class="w3-2021-desert-mist">
             <div class="w3-bar w3-2021-inkwell">
                 <a href="/logout" class="w3-bar-item w3-right w3-button">Logout</a>
@@ -23,10 +23,10 @@
 
         </header>
 
-        <div id="accountbody" class="w3-container w3-cell">
+        <div id="orderbody" class="w3-container w3-cell">
             
-            <div id="accountform" class="w3-container w3-cell w3-2021-inkwell">
-                <h1>Current Order</h1>
+            <div id="order" class="w3-container w3-2021-inkwell">
+                <h1 class="w3-cursive">Current Order</h1>
                 <p>Order #:{{cart.id}}</p>
                 <p>For:{{cart.order_user}}</p>
                 <p>{{cart.order_item.count}} Items:</p>
@@ -35,8 +35,8 @@
                 {% endfor %}
                 <p>Amount: ${{cart.order_price}}</p>
             </div>
-            <div id="accountform" class="w3-container w3-cell w3-2021-inkwell">
-                <h1>Checkout</h1>
+            <div id="checkout" class="w3-container w3-2021-inkwell">
+                <h1 class="w3-cursive">Checkout</h1>
                 <div id="paypal-button-container"></div>
             </div>
         </div>

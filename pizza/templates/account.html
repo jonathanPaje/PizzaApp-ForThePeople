@@ -50,6 +50,13 @@
                               <!-- <p>{{pizza}}</p> -->
                          <!-- </form> -->
                          <p class="w3-cursive">{{pizza}}</p>
+                         <form action="" method="post">
+                              {% if pizza in user.favorites.all %}
+                              <a href="/favorite/{{pizza.id}}">Remove Favorite</a>
+                              {% else %}
+                              <a href="/favorite/{{pizza.id}}">Add Favorite</a>
+                              {% endif %}
+                         </form>
                          {% endfor %}
                     {% endfor %}
                </div>

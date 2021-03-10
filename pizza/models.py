@@ -50,7 +50,7 @@ class Pizza(models.Model):
      toppings = models.ManyToManyField(Topping, related_name='toppings')
      favorite = models.ManyToManyField(User, related_name="favorites")
      def __str__(self):
-          return f'{self.name}-{self.size.name} with {self.toppings.count()} toppings for {self.size.price} '
+          return f'{self.name}-{self.size.name} for {self.size.price} '
 
 
 class Order(models.Model):
